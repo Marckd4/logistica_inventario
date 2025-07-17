@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Bodega General</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Inventario</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'bodega_general' %}">Bodega General</a>
+          <a class="nav-link active" href="{% url 'importar_excel' %}">Importar desde Excel</a>
+          <a class="nav-link active" href="{% url 'exportar_excel' %}">Exportar a Excel</a>
+          <a class="nav-link active" href="{% url 'resumen_general' %}" > Ver Resumen</a>
+
+
+
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <form method="get" class="row g-2 mb-4">
+   
+</form>
+
+    <h2>Bodega General</h2>
+    <div class="mb-3">
+    <a href="{% url 'crear_producto' %}" class="btn btn-success">+ Agregar Producto</a>
+    </div>
+     <div class="col-auto">
+        <input type="text" name="q" class="form-control" placeholder="Buscar exacto..." value="{{ query }}">
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary">🔍 Buscar</button>
+        <a href="{% url 'bodega_general' %}" class="btn btn-secondary">✖ Limpiar</a>
+    </div>
+    
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Categoría</th>
+                <th>Empresa</th>
+                <th>Pasillo</th>
+                <th>Ubicación</th>
+                <th>Cod EAN</th>
+                <th>Cod DUN</th>
+                <th>Cod Sistema</th>
+                <th>Descripción</th>
+                <th>Unidad</th>
+                <th>Pack</th>
+                <th>Factorx</th>
+                <th>Cajas</th>
+                <th>Saldo</th>
+                <th>Stock Físico</th>
+                <th>Observación</th>
+                <th>Fecha Venc</th>
+                <th>Fecha IMP</th>
+                <th>Contenedor</th>
+                <th>Fecha INV</th>
+                <th>Encargado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos %}
+            <tr>
+                <td>{{ producto.id }}</td>
+                <td>{{ producto.categoria }}</td>
+                <td>{{ producto.empresa }}</td>
+                <td>{{ producto.pasillo }}</td>
+                <td>{{ producto.ubicacion }}</td>
+                <td>{{ producto.cod_ean }}</td>
+                <td>{{ producto.cod_dun }}</td>
+                <td>{{ producto.cod_sistema }}</td>
+                <td>{{ producto.descripcion }}</td>
+                <td>{{ producto.unidad }}</td>
+                <td>{{ producto.pack }}</td>
+                <td>{{ producto.factorx }}</td>
+                <td>{{ producto.cajas }}</td>
+                <td>{{ producto.saldo }}</td>
+                <td>{{ producto.stock_fisico }}</td>
+                <td>{{ producto.observacion }}</td>
+                <td>{{ producto.fecha_venc }}</td>
+                <td>{{ producto.fecha_imp }}</td>
+                <td>{{ producto.contenedor }}</td>
+                <td>{{ producto.fecha_inv }}</td>
+                <td>{{ producto.encargado }}</td>
+                <td>
+                <a href="{% url 'editar_producto' producto.id %}" class="btn btn-sm btn-warning">Editar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="21">No hay productos registrados.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

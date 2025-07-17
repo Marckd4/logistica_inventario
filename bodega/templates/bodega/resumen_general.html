@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Resumen General</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Inventario</a>
+    <a class="nav-link text-white" href="{% url 'bodega_general' %}">← Volver a Bodega</a>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <h2>📊 Resumen General</h2>
+
+  <div class="card mb-4">
+    <div class="card-header bg-primary text-white">
+      Totales
+    </div>
+    <div class="card-body row">
+      <div class="col-md-3"><strong>Total productos:</strong> {{ resumen.total_productos }}</div>
+      <div class="col-md-3"><strong>Total cajas:</strong> {{ resumen.total_cajas }}</div>
+      <div class="col-md-3"><strong>Total saldo:</strong> {{ resumen.total_saldo }}</div>
+      <div class="col-md-3"><strong>Stock físico total:</strong> {{ resumen.total_stock_fisico }}</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h5>Productos por categoría</h5>
+      <ul class="list-group">
+        {% for item in resumen.por_categoria %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ item.categoria }}
+            <span class="badge bg-primary rounded-pill">{{ item.cantidad }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <h5>Productos por empresa</h5>
+      <ul class="list-group">
+        {% for item in resumen.por_empresa %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ item.empresa }}
+            <span class="badge bg-success rounded-pill">{{ item.cantidad }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>
