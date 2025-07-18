@@ -25,6 +25,8 @@ SECRET_KEY = 'django-insecure-d$l5$1mw3t2oa#p6^!+&7-y#+refamg=tfl9ut0vsff%+74&tg
 # SECURITY WARNING: don't run with debug turned on in production!
 import os
 import dj_database_url
+import dj_database_url
+
 
 
 DEBUG = True
@@ -32,7 +34,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+    'default': dj_database_url.config(default='sqlite:///db.sqlite3')
 }
 
 

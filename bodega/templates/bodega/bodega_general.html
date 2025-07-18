@@ -6,24 +6,24 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Inventario</a>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link active" href="{% url 'bodega_general' %}">Bodega General</a>
-          <a class="nav-link active" href="{% url 'importar_excel' %}">Importar desde Excel</a>
-          <a class="nav-link active" href="{% url 'exportar_excel' %}">Exportar a Excel</a>
-          <a class="nav-link active" href="{% url 'resumen_general' %}" > Ver Resumen</a>
-
-
-
-        </li>
-      </ul>
+    <a class="navbar-brand" href="#">Logistica ChileanTrading</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" href="{% url 'bodega_general' %}">Bodega General</a>
+        <a class="nav-link active" href="{% url 'importar_excel' %}">Importar desde Excel</a>
+        <a class="nav-link active" href="{% url 'exportar_excel' %}">Exportar a Excel</a>
+        <a class="nav-link active" href="{% url 'resumen_general' %}" > Ver Resumen</a>
+        
+      </div>
     </div>
   </div>
 </nav>
+
 
 <div class="container mt-4">
   <form method="get" class="row g-2 mb-4">
@@ -66,6 +66,7 @@
                 <th>Contenedor</th>
                 <th>Fecha INV</th>
                 <th>Encargado</th>
+                <th>Accion</th>
             </tr>
         </thead>
         <tbody>
